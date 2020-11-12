@@ -50,3 +50,12 @@ const json = [
 ];
 
 document.addEventListener("DOMContentLoaded", function () { afficher(json) });
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+        .register("/sw.js")
+        .then((reg) => { console.log("votre service worker a été enregistré!"); })
+        .catch((error) => { console.error(error); });
+} else {
+    console.warn("Service workers are not supported.");
+}
