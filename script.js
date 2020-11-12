@@ -56,16 +56,15 @@ if ('serviceWorker' in navigator) {
         .register("./sw.js")
         .then((reg) => { console.log("votre service worker a été enregistré!"); })
         .catch((error) => { console.error(error); });
+        self.addEventListener('message', event => {
+            this.clients.matchAll().then(clients => {
+                clients.forEach(client => client.postMessage('Enchanté, je suis le service worker'));
+            });
+        });
+        self.addEventListener('fetch', event => {
+            event.RespondWith(newResponse('PWA!!!!'));
+        });
 } else {
     console.warn("Service workers are not supported.");
 }
 
-self.addEventListener('message', event => {
-    this.clients.matchAll().then(clients => {
-        clients.forEach(client => client.postMessage('Enchanté, je suis le service worker'));
-    });
-});
-
-Self.addEventListener('fetch', event => {
-    event.RespondWith(newResponse('PWA!!!!'));
-});
