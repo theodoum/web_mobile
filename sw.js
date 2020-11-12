@@ -1,1 +1,1 @@
-Self.addEventListener('fetch', event => { event.RespondWith(newResponse('PWA!!!!')); });
+self.addEventListener('install', event => { event.waitUntil(Promise.resolve('Install phase succeed')); });
