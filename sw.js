@@ -5,7 +5,7 @@ self.addEventListener('message', event => {
 });
 
 self.addEventListener('fetch', event => {
-    event.RespondWith(newResponse('PWA!!!!'));
+    event.RespondWith(new Response('PWA!!!!'));
 });
 
 self.addEventListener('install', event => {
