@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded",
         event.waitUntil(
             caches.open('nom_du_cache')
                 .then(cache => {
-                    Returncache.addAll(['./index.html', './style.css', './script.js']);
+                    return cache.addAll(['./index.html', './style.css', './script.js']);
                 }));
         fetch("https://suspicious-pare-499c00.netlify.app/images.json")
             .then((response) => response.json())
