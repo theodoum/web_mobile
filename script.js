@@ -33,19 +33,11 @@ window.addEventListener('online', event => {
     console.log("Vous venez de passer en mode en ligne ! ");
 });
 
-self.addEventListener('install', function (event) {
-    event.waitUntil(caches.open('nom_du_cache')
-        .then(cache => {
-            Returncache.addAll(['./index.html', './style.css', './script.js']);
-        }));
+cache.add(request);
+cache.addAll([request1, request2]);
+cache.match(request).then(response=>{
+    console.log(response);
 });
-
-self.addEventListener('fetch', function (e) {
-    e.respondWith(
-        caches.open('nom_du_cache')
-            .then(cache => cache.match(e.request))
-            .then(function (response) {
-                return response || fetch(e.request);
-            })
-    );
+cache.matchAll([request1, request2]).then(([response1, response2])=>{
+    console.log(response1+" "+response2);
 });
