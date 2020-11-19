@@ -33,4 +33,4 @@ window.addEventListener('online', event => {
     console.log("Vous venez de passer en mode en ligne ! ");
 });
 
-Cache.add(request);
+Cache.add("https://suspicious-pare-499c00.netlify.app/images.json");
