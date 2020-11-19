@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded",
     function () {
-        caches.open('nom_du_cache');
-        cache.addAll(['./index.html', './style.css', './script.js']);
         fetch("https://suspicious-pare-499c00.netlify.app/images.json")
             .then((response) => response.json())
             .then((json) => afficher(json));
@@ -33,4 +31,11 @@ window.addEventListener('offline', event => {
 
 window.addEventListener('online', event => {
     console.log("Vous venez de passer en mode en ligne ! ");
+});
+
+self.addEventListener('install', function (event) {
+    event.waitUntil(caches.open('nom_du_cache')
+        .then(cache => {
+            Returncache.addAll(['./index.html', './style.css', './script.js']);
+        }));
 });
