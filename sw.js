@@ -1,8 +1,8 @@
 self.addEventListener('fetch', event => {
-    event.RespondWith(new Response('PWA!!!!'));
+    console.log(event.request.url);
 });
 
-self.addEventListener('message', event => {
+/*self.addEventListener('message', event => {
     this.clients.matchAll().then(clients => {
         clients.forEach(client => client.postMessage('Enchanté, je suis le service worker'));
     });
@@ -10,4 +10,4 @@ self.addEventListener('message', event => {
 
 self.addEventListener('install', event => {
     event.waitUntil(Promise.resolve('Install phase succeed'));
-});
+});*/
