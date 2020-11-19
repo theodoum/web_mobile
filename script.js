@@ -24,3 +24,17 @@ function afficher(json) {
     });
     document.querySelector(".container").innerHTML = html;
 }
+
+if(navigator.online){
+    console.log("Vous êtes en mode en ligne !");
+}else if(navigator.offline){
+    console.log("Vous êtes en mode hors ligne !");
+}
+
+window.addEventListener('offline', event=>{
+    console.log("Vous venez de passer en mode hors ligne ! "+event);
+});
+
+window.addEventListener('online', event=>{
+    console.log("Vous venez de passer en mode en ligne ! "+event);
+});
