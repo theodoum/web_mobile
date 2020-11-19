@@ -1,6 +1,6 @@
 self.addEventListener('fetch', event => {
     const url = event.request.url;
-    if (url.indexOf("https://monNomDeDomaine/images.json") === 0) {
+    if (url.indexOf("https://suspicious-pare-499c00.netlify.app/images.json") === 0) {
         event.respondWith(
             fetch(event.request).then((response) => {
                 if (response.statusText !== "OK") {
