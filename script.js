@@ -1,10 +1,7 @@
 document.addEventListener("DOMContentLoaded",
-    function (event) {
-        event.waitUntil(
-            caches.open('nom_du_cache')
-                .then(cache => {
-                    return cache.addAll(['./index.html', './style.css', './script.js']);
-                }));
+    function () {
+        caches.open('nom_du_cache');
+        cache.addAll(['./index.html', './style.css', './script.js']);
         fetch("https://suspicious-pare-499c00.netlify.app/images.json")
             .then((response) => response.json())
             .then((json) => afficher(json));
