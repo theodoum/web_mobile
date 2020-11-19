@@ -33,10 +33,20 @@ window.addEventListener('online', event => {
     console.log("Vous venez de passer en mode en ligne ! ");
 });
 
-this.addEventListener('install', function(event) {
+/*this.addEventListener('install', function(event) {
     event.waitUntil(
       caches.open('v1').then(function(cache) {
         return cache.add('https://suspicious-pare-499c00.netlify.app/images.json');
       })
     );
-  });
+  });*/
+
+self.addEventListener('install', function (event) {
+    event.waitUntil(
+        caches.open('nom_du_cache')
+            .then(cache => {
+                Return
+                cache.addAll(['./index.html', './style.css', './script.js']);
+            })
+    );
+});
