@@ -33,13 +33,4 @@ window.addEventListener('online', event => {
     console.log("Vous venez de passer en mode en ligne ! ");
 });
 
-new Cache;
-
-Cache.add(Request);
-Cache.addAll([request1, request2]);
-Cache.match(request).then(response => {
-    console.log(response);
-});
-Cache.matchAll([request1, request2]).then(([response1, response2]) => {
-    console.log(response1 + " " + response2);
-});
+cache.add(request);
