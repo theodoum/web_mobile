@@ -1,10 +1,5 @@
 document.addEventListener("DOMContentLoaded",
     function () {
-        if(navigator.online){
-            console.log("Vous êtes en mode en ligne !");
-        }else if(navigator.offline){
-            console.log("Vous êtes en mode hors ligne !");
-        }
         fetch("https://suspicious-pare-499c00.netlify.app/images.json")
             .then((response) => response.json())
             .then((json) => afficher(json));
@@ -28,6 +23,12 @@ function afficher(json) {
         html += "</div>";
     });
     document.querySelector(".container").innerHTML = html;
+}
+
+if(navigator.online){
+    console.log("Vous êtes en mode en ligne !");
+}else if(navigator.offline){
+    console.log("Vous êtes en mode hors ligne !");
 }
 
 window.addEventListener('offline', event=>{
