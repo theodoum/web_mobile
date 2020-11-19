@@ -33,4 +33,4 @@ window.addEventListener('online', event => {
     console.log("Vous venez de passer en mode en ligne ! ");
 });
 
-cache.add(request);
+Cache.add(request);
