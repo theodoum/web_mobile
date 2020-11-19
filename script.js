@@ -1,5 +1,14 @@
 document.addEventListener("DOMContentLoaded",
     function () {
+        if (navigator.online) {
+            document.querySelector(".notification").setAttribute("hidden", "");
+        }
+        window.addEventListener("online", () => {
+            document.querySelector(".notification").setAttribute("hidden", "");
+        });
+        window.addEventListener("offline", () => {
+            document.querySelector(".notification").removeAttribute("hidden");
+        });
         fetch("https://suspicious-pare-499c00.netlify.app/images.json")
             .then((response) => response.json())
             .then((json) => afficher(json));
@@ -24,32 +33,3 @@ function afficher(json) {
     });
     document.querySelector(".container").innerHTML = html;
 }
-
-window.addEventListener('offline', event => {
-    console.log("Vous venez de passer en mode hors ligne ! ");
-});
-
-window.addEventListener('online', event => {
-    console.log("Vous venez de passer en mode en ligne ! ");
-});
-
-self.addEventListener('install', function (event) {
-    event.waitUntil(
-        caches.open('nom_du_cache')
-            .then(cache => {
-                Return
-                cache.addAll(['./index.html', './style.css', './script.js']);
-            })
-    );
-});
-
-self.addEventListener('fetch', function (e) {
-    e.respondWith(
-        caches.open('nom_du_cache')
-            .then(cache => cache.match(e.request))
-            .then(function (response) {
-                console.log(response);
-                return response || fetch(e.request);
-            })
-    );
-});

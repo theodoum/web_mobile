@@ -1,4 +1,4 @@
-/*self.addEventListener('fetch', event => {
+self.addEventListener('fetch', event => {
     const url = event.request.url;
     if (url.indexOf("https://suspicious-pare-499c00.netlify.app/images.json") === 0) {
         event.respondWith(
@@ -14,8 +14,14 @@
                 });
             })
         );
+    } else {
+        event.respondWith(
+            caches
+                .open(cacheName)
+                .then(cache => cache.match(event.request))
+                .then(response => response || fetch(url)));
     }
-});*/
+});
 
 const cacheName = "galerie";
 const files = [
@@ -25,3 +31,23 @@ const files = [
     "https://bulma.io/images/placeholders/1280x960.png",
     "https://bulma.io/images/placeholders/96x96.png"
 ];
+
+self.addEventListener("install", e => {
+    caches.open(cacheName).then(cache => {
+        cache.addAll(files);
+    });
+});
+
+self.addEventListener("activate", e => {
+    e.waitUntil(
+        caches.keys().then(function (keyList) {
+            return Promise.all(
+                keyList.map(function (key) {
+                    if (key !== cacheName) {
+                        caches.delete(key);
+                    }
+                })
+            );
+        })
+    );
+});
