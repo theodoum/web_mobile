@@ -48,6 +48,7 @@ self.addEventListener('fetch', function (e) {
         caches.open('nom_du_cache')
             .then(cache => cache.match(e.request))
             .then(function (response) {
+                console.log(response);
                 return response || fetch(e.request);
             })
     );
