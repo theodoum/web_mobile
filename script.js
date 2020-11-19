@@ -53,5 +53,3 @@ self.addEventListener('fetch', function (e) {
             })
     );
 });
-
-cache.keys().then(requests=>{console.log(requests)}); 

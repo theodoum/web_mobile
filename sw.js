@@ -1,4 +1,4 @@
-self.addEventListener('fetch', event => {
+/*self.addEventListener('fetch', event => {
     const url = event.request.url;
     if (url.indexOf("https://suspicious-pare-499c00.netlify.app/images.json") === 0) {
         event.respondWith(
@@ -15,4 +15,13 @@ self.addEventListener('fetch', event => {
             })
         );
     }
-});
+});*/
+
+const cacheName = "galerie";
+const files = [
+    "/",
+    "/script.js",
+    "https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.css",
+    "https://bulma.io/images/placeholders/1280x960.png",
+    "https://bulma.io/images/placeholders/96x96.png"
+];
