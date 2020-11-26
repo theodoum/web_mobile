@@ -7,8 +7,8 @@ function reduireArray(array, size) {
 
 const dateTimeFormat = Intl.DateTimeFormat("fr");
 
-function afficher(json) {
-  const selections = reduireArray(json, 3);
+function afficher(json){
+	const selections = reduireArray(json, 3);
 
   let html = "";
 
@@ -46,8 +46,9 @@ function afficher(json) {
                 <div class="content">
                    ${repo.description}
                   <br />
-                  Dernière mise à jour: <time datetime="${repo.updated_at
-        }">${dateTimeFormat.format(new Date(repo.updated_at))}</time>
+                  Dernière mise à jour: <time datetime="${
+                    repo.updated_at
+                  }">${dateTimeFormat.format(new Date(repo.updated_at))}</time>
                 </div>
               </div>
             </div>
@@ -73,25 +74,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let fetchData;
   if (navigator.onLine) {
-    fetchData = fetch("https://suspicious-pare-499c00.netlify.app/images.json")
+    fetchData = fetch("https://suspicious-pare-499c00.netlify.app//images.json")
       .then((response) => response.json())
       .then((data) => localforage.setItem("data", data));
-  }
+  } 
   else {
     fetchData = localforage.getItem("data");
   }
 
   fetchData.then((json) => afficher(json));
 });
-
-if ('Notification' in window) {
-  if (Notification.permission === "granted") {
-    const notification = newNotification('Ma Seconde Notification');
-  } else if (Notification.permission !== "denied") {
-    Notification.requestPermission(permission => {
-      if (permission === "granted") {
-        const notification = newNotification('Ma Première Notification');
-      }
-    });
-  }
-}
