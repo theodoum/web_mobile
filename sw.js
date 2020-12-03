@@ -78,3 +78,13 @@ self.addEventListener('sync', function(event) {
     event.waitUntil(syncAttendees()); // on lance la requête de synchronisation
   }
 });
+
+function syncAttendees() {
+  return update({ url: `https://reqres.in/api/users` })
+    .then(refresh)
+    .then(attendees =>
+      self.registration.showNotification(
+        `${attendees.length} attendees to the PWA Workshop`
+      )
+    );
+}
