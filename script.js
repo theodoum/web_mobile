@@ -35,9 +35,9 @@ function afficher(json, data){
       var id = repo.name.replace(' ', '_');
       
       if(data.includes(id)){
-        var is_fav = "is_fav",
+        var is_fav = "is_fav";
       }else{
-        var is_fav = "no_fav",
+        var is_fav = "no_fav";
       }
 
       html += `
