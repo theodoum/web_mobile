@@ -52,7 +52,7 @@ function afficher(json){
                   }">${dateTimeFormat.format(new Date(repo.updated_at))}</time>
                   <br>
                   <div class="box_btn_favoris">
-                    <button onclick="click_favoris()" class="btn_favoris" id="${id}">Favoris</button>
+                    <button onclick="click_favoris(this.id)" class="btn_favoris" id="${id}">Favoris</button>
                   </div>
                 </div>
               </div>
@@ -90,8 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
   fetchData.then((json) => afficher(json));
 });
 
-function click_favoris(){
-  var id_elm = this.getAttribute('id');
+function click_favoris(id_elm){
   console.log(id_elm);
   return swRegistration.sync.register('click');
 }
