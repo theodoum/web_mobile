@@ -37,7 +37,7 @@ function afficher(json, data){
     selection.forEach((repo) => {
       var id = repo.name.replace(' ', '_');
       
-      console.log("Data: "+data);
+      console.log("Data: "+data+" Id: "+id);
       if(data.includes(id)){
         var is_fav = "is_fav";
       }else{
