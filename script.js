@@ -24,7 +24,9 @@ function recup_fav(){
 
 
 function afficher(json, data){
-  console.log("Data: "+data);
+  if(typeof(data) == undefined){
+    data = [];
+  }
 	const selections = reduireArray(json, 3);
 
   let html = "";
