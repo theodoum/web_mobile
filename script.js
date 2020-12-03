@@ -16,7 +16,7 @@ function afficher(json){
     html += '<div class="columns">';
 
     selection.forEach((repo) => {
-      console.log("Le repo : "+repo.name+" "+repo);
+      var id = repo.name.replace(' ', '_');
       html += `
             <div class="column">
             <div class="card">
@@ -50,7 +50,7 @@ function afficher(json){
                   Dernière mise à jour: <time datetime="${
                     repo.updated_at
                   }">${dateTimeFormat.format(new Date(repo.updated_at))}</time>
-                  <div>Test</div>
+                  <div id="${id}">Test</div>
                 </div>
               </div>
             </div>
