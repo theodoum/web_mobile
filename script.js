@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function click_favoris(id_elm){
-  fetch("https://suspicious-pare-499c00.netlify.app/favoris", {
+  fetch("http://localhost:3000/favoris", {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
