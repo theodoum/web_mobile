@@ -95,9 +95,9 @@ function click_favoris(id_elm){
   var elm = document.getElementById(id_elm);
   console.log(elm.className);
   if(elm.className == "no_fav"){
-    elm.className("is_name");
+    elm.className="is_name";
   }else{
-    elm.className("no_name");
+    elm.className="no_name";
   }
 
   fetch("http://localhost:3000/favoris", {
