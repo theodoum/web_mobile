@@ -33,11 +33,13 @@ function afficher(json, data){
 
     selection.forEach((repo) => {
       var id = repo.name.replace(' ', '_');
+      
       if(data.includes(id)){
-        var classname = "is_fav",
+        var is_fav = "is_fav",
       }else{
-        var classname = "no_fav",
+        var is_fav = "no_fav",
       }
+
       html += `
             <div class="column">
             <div class="card">
@@ -73,7 +75,7 @@ function afficher(json, data){
                   }">${dateTimeFormat.format(new Date(repo.updated_at))}</time>
                   <br>
                   <div class="box_btn_favoris">
-                    <button onclick="click_favoris(this.id)" class="${classname}" id="${id}">Favoris</button>
+                    <button onclick="click_favoris(this.id)" class="${is_fav}" id="${id}">Favoris</button>
                   </div>
                 </div>
               </div>
