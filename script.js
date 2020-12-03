@@ -92,6 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.getElementsByClassName("btn_favoris").onclick = function(){
   var id_elm = this.getAttribute('id');
+  console.log(id_elm);
   return swRegistration.sync.register('click');
 }
 
