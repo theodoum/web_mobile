@@ -27,6 +27,7 @@ function afficher(json, data){
   if(typeof(data) == "undefined"){
     data = [];
   }
+  console.log("Non null: "+data);
 	const selections = reduireArray(json, 3);
 
   let html = "";
