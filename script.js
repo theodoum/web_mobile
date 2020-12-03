@@ -16,6 +16,7 @@ function afficher(json){
     html += '<div class="columns">';
 
     selection.forEach((repo) => {
+      console.log("Le repo : "+repo);
       html += `
             <div class="column">
             <div class="card">
