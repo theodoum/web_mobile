@@ -18,7 +18,7 @@ function recup_fav(){
     return res.json();
   }).then(data => {
     console.log("fonction", data);
-    return fonction;
+    return data;
   });
 }
 
@@ -137,6 +137,6 @@ function click_favoris(id_elm){
     return res.json();
   }).then(data => {
     console.log("click", data)
-    favs = click;
+    favs = data;
   });
 }
