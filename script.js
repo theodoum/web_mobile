@@ -136,7 +136,7 @@ function click_favoris(id_elm){
   }).then(res => {
     return res.json();
   }).then(data => {
-    console.log("data", data)
+    console.log("Click:"+data);
     favs = data;
   });
 }
