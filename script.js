@@ -1,3 +1,7 @@
+var favoris_global = [];
+recup_fav();
+console.log("Verif: "+favoris_global);
+
 function reduireArray(array, size) {
   if (array.length <= size) {
     return [array];
@@ -18,18 +22,15 @@ function recup_fav(){
     return res.json();
   }).then(data => {
     console.log("fonction", data);
-    return data;
+    favoris_global = data;
   });
 }
 
-var test = recup_fav();
-console.log("Test: "+test);
-
-function afficher(json, data){
-  if(typeof(data) == "undefined"){
+function afficher(json, favoris_global){
+  if(typeof(favoris_global) == "undefined"){
     data = [];
   }
-  console.log("Non null: "+data);
+  console.log("Non null: "+favoris_global);
 	const selections = reduireArray(json, 3);
 
   let html = "";
@@ -40,8 +41,8 @@ function afficher(json, data){
     selection.forEach((repo) => {
       var id = repo.name.replace(' ', '_');
       
-      console.log("Data: "+data+" Id: "+id);
-      if(data.includes(id)){
+      console.log("Data: "+favoris_global+" Id: "+id);
+      if(favoris_global.includes(id)){
         var is_fav = "is_fav";
       }else{
         var is_fav = "no_fav";
@@ -117,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
     fetchData = localforage.getItem("data");
   }
 
-  fetchData.then((json) => afficher(json, data=recup_fav()));
+  fetchData.then((json) => afficher(json, favoris_global));
 });
 
 function click_favoris(id_elm){
