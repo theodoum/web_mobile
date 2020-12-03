@@ -9,6 +9,10 @@ const port = 3000;
 
 let favoris = [];
 
+app.get("/", (request, response) => {
+    response.send("Hello World Of Warcraft");
+});
+
 app.get("/favoris", (request, response) => {
     response.send(favoris);
 });

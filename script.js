@@ -91,21 +91,17 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function click_favoris(id_elm){
-  Notification.requestPermission(permission => {
-    if (permission === "granted") {
-      registerBackgroundSync();
-    } else console.error("Permission was not granted.");
+  fetch("https://suspicious-pare-499c00.netlify.app/favoris", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({id_elm}),
+  }).then(res => {
+    return res.json();
+  }).then(data => {
+    console.log("data", data)
+    favs = data;
   });
 }
-
-function registerBackgroundSync() {
-  if (!navigator.serviceWorker) {
-    return console.error("Service Worker not supported");
-  }
-
-  navigator.serviceWorker.ready
-    .then(registration => registration.sync.register("syncAttendees"))
-    .then(() => console.log("Registered background sync"))
-    .catch(err => console.error("Error registering background sync", err));
-}
-
