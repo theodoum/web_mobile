@@ -18,8 +18,12 @@ app.get("/favoris", (request, response) => {
 });
 
 app.post("/favoris", (request, response) => {
-    console.log(request.body);
-    favoris.push(request.body);
+    console.log(request.body['id_elm']);
+    if(favoris.includes(request.body['id_elm'])){
+        favoris = favoris.filter(items => items !== request.body['id_elm']);
+    }else{  
+        favoris.push(request.body['id_elm']);
+    }
     response.send(favoris);
 });
 

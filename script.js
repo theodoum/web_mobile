@@ -91,6 +91,10 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function click_favoris(id_elm){
+
+  var elm = document.getElementById(id_elm);
+  console.log(elm.className);
+
   fetch("http://localhost:3000/favoris", {
     method: 'POST',
     headers: {
