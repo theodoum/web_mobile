@@ -7,7 +7,23 @@ function reduireArray(array, size) {
 
 const dateTimeFormat = Intl.DateTimeFormat("fr");
 
-function afficher(json){
+function recup_fav(){
+  fetch("http://localhost:3000/favoris", {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+  }).then(res => {
+    return res.json();
+  }).then(data => {
+    console.log("data", data)
+    return data;
+  });
+}
+
+
+function afficher(json, data){
 	const selections = reduireArray(json, 3);
 
   let html = "";
@@ -17,6 +33,11 @@ function afficher(json){
 
     selection.forEach((repo) => {
       var id = repo.name.replace(' ', '_');
+      if(data.includes(id)){
+        var classname = "is_fav",
+      }else{
+        var classname = "no_fav",
+      }
       html += `
             <div class="column">
             <div class="card">
@@ -52,7 +73,7 @@ function afficher(json){
                   }">${dateTimeFormat.format(new Date(repo.updated_at))}</time>
                   <br>
                   <div class="box_btn_favoris">
-                    <button onclick="click_favoris(this.id)" class="no_fav" id="${id}">Favoris</button>
+                    <button onclick="click_favoris(this.id)" class="${classname}" id="${id}">Favoris</button>
                   </div>
                 </div>
               </div>
@@ -87,13 +108,11 @@ document.addEventListener("DOMContentLoaded", function () {
     fetchData = localforage.getItem("data");
   }
 
-  fetchData.then((json) => afficher(json));
+  fetchData.then((json) => afficher(json, data=recup_fav()));
 });
 
 function click_favoris(id_elm){
-
   var elm = document.getElementById(id_elm);
-  console.log(elm.className);
   if(elm.className == "no_fav"){
     elm.className="is_fav";
   }else{
