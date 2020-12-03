@@ -22,6 +22,8 @@ function recup_fav(){
   });
 }
 
+var test = recup_fav();
+console.log("Test: "+test);
 
 function afficher(json, data){
   if(typeof(data) == "undefined"){
