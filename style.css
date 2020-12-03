@@ -3,6 +3,7 @@
     border: 2px solid black;
     border-radius: 20px;
     padding: 5px 15px;
+    cursor: pointer;
 }
 
 .box_btn_favoris{
