@@ -52,7 +52,7 @@ function afficher(json){
                   }">${dateTimeFormat.format(new Date(repo.updated_at))}</time>
                   <br>
                   <div class="box_btn_favoris">
-                    <button onclick="click_favoris(this.id)" class="btn_favoris" id="${id}">Favoris</button>
+                    <button onclick="click_favoris(this.id)" class="btn_favoris no_fav" id="${id}">Favoris</button>
                   </div>
                 </div>
               </div>
@@ -94,6 +94,11 @@ function click_favoris(id_elm){
 
   var elm = document.getElementById(id_elm);
   console.log(elm.className);
+  if(elm.className == "no_fav"){
+    elm.className("is_name");
+  }else{
+    elm.className("no_name");
+  }
 
   fetch("http://localhost:3000/favoris", {
     method: 'POST',
