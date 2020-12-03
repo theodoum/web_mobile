@@ -27,7 +27,6 @@ function afficher(json, data){
   if(typeof(data) == "undefined"){
     data = [];
   }
-  console.log(data);
 	const selections = reduireArray(json, 3);
 
   let html = "";
@@ -38,6 +37,7 @@ function afficher(json, data){
     selection.forEach((repo) => {
       var id = repo.name.replace(' ', '_');
       
+      console.log("Data: "+data);
       if(data.includes(id)){
         var is_fav = "is_fav";
       }else{
