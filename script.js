@@ -1,6 +1,5 @@
 var favoris_global = [];
 recup_fav();
-console.log("Verif: "+favoris_global);
 
 function reduireArray(array, size) {
   if (array.length <= size) {
@@ -21,7 +20,6 @@ function recup_fav(){
   }).then(res => {
     return res.json();
   }).then(data => {
-    console.log("fonction", data);
     favoris_global = data;
   });
 }
@@ -30,7 +28,6 @@ function afficher(json, favoris_global){
   if(typeof(favoris_global) == "undefined"){
     data = [];
   }
-  console.log("Non null: "+favoris_global);
 	const selections = reduireArray(json, 3);
 
   let html = "";
@@ -41,7 +38,6 @@ function afficher(json, favoris_global){
     selection.forEach((repo) => {
       var id = repo.name.replace(' ', '_');
       
-      console.log("Data: "+favoris_global+" Id: "+id);
       if(favoris_global.includes(id)){
         var is_fav = "is_fav";
       }else{
@@ -139,7 +135,7 @@ function click_favoris(id_elm){
   }).then(res => {
     return res.json();
   }).then(data => {
-    console.log("click", data)
+    console.log("click", data);
     favs = data;
   });
 }
