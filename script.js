@@ -94,7 +94,7 @@ var favoris = document.getElementsByClassName("btn_favoris");
 favoris.addEventListener("click", function(){
   var id_elm = this.getAttribute('id');
   return swRegistration.sync.register('click');
-});
+}, false);
 
 navigator.serviceWorker.ready.then(function(swRegistration) {
   return swRegistration.sync.register('myFirstSync');
