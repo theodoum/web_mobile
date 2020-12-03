@@ -20,5 +20,5 @@ app.post("/favoris", (request, response) => {
 });
 
 app.listen(port, err => {
-    console.log('server is listening on ${port}');
+    console.log('server is listening on '+port+'');
 });

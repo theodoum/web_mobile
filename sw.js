@@ -71,3 +71,7 @@ self.addEventListener("fetch", event => {
     );
   }
 });
+
+self.addEventListener('sync', function(event) {
+  console.log("Background Sync");
+});

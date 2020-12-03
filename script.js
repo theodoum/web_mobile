@@ -84,3 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   fetchData.then((json) => afficher(json));
 });
+
+navigator.serviceWorker.ready.then(function(swRegistration) {
+  return swRegistration.sync.register('myFirstSync');
+});
