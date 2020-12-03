@@ -90,11 +90,10 @@ document.addEventListener("DOMContentLoaded", function () {
   fetchData.then((json) => afficher(json));
 });
 
-var favoris = document.getElementsByClassName("btn_favoris");
-favoris.addEventListener("click", function(){
+document.getElementsByClassName("btn_favoris").onclick = function(){
   var id_elm = this.getAttribute('id');
   return swRegistration.sync.register('click');
-}, false);
+}
 
 navigator.serviceWorker.ready.then(function(swRegistration) {
   return swRegistration.sync.register('myFirstSync');
