@@ -42,8 +42,6 @@ function afficher(json){
                     <p class="subtitle is-6">@Parcourir</p>
                   </div>
                 </div>
-
-                <div>Test</div>
   
                 <div class="content">
                    ${repo.description}
@@ -51,6 +49,7 @@ function afficher(json){
                   Dernière mise à jour: <time datetime="${
                     repo.updated_at
                   }">${dateTimeFormat.format(new Date(repo.updated_at))}</time>
+                  <div>Test</div>
                 </div>
               </div>
             </div>
