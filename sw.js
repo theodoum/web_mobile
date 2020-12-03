@@ -73,10 +73,8 @@ self.addEventListener("fetch", event => {
 });
 
 self.addEventListener('sync', function(event) {
-  if (event.tag == 'myFirstSync') {
-    console.log("First Background Sync");
-    event.waitUntil(doSomeStuff());
-  }else if(event.tag == 'click'){
-    console.log("Click");
+  console.log("sync event", event);
+  if (event.tag === "syncAttendees") {
+    event.waitUntil(syncAttendees()); // on lance la requête de synchronisation
   }
 });

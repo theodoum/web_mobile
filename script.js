@@ -91,10 +91,21 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function click_favoris(id_elm){
-  console.log(id_elm);
-  return swRegistration.sync.register('click');
+  Notification.requestPermission(permission => {
+    if (permission === "granted") {
+      registerBackgroundSync();
+    } else console.error("Permission was not granted.");
+  });
 }
 
-navigator.serviceWorker.ready.then(function(swRegistration) {
-  return swRegistration.sync.register('myFirstSync');
-});
+function registerBackgroundSync() {
+  if (!navigator.serviceWorker) {
+    return console.error("Service Worker not supported");
+  }
+
+  navigator.serviceWorker.ready
+    .then(registration => registration.sync.register("syncAttendees"))
+    .then(() => console.log("Registered background sync"))
+    .catch(err => console.error("Error registering background sync", err));
+}
+
