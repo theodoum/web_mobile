@@ -51,7 +51,9 @@ function afficher(json){
                     repo.updated_at
                   }">${dateTimeFormat.format(new Date(repo.updated_at))}</time>
                   <br>
-                  <button class="btn_favoris" id="${id}">Favoris</button>
+                  <div class="box_btn_favoris">
+                    <button class="btn_favoris" id="${id}">Favoris</button>
+                  </div>
                 </div>
               </div>
             </div>
