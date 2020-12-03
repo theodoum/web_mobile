@@ -19,7 +19,7 @@ app.get("/favoris", (request, response) => {
 
 app.post("/favoris", (request, response) => {
     console.log(request.body);
-    favoris = request.body;
+    favoris = favoris.push(request.body);
     response.send(favoris);
 });
 
