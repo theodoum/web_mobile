@@ -1,3 +1,6 @@
+if('Notification' in window){
+}
+
 var favoris_global = [];
 recup_fav();
 
@@ -146,11 +149,4 @@ function click_favoris(id_elm){
     console.log("data", data);
     favs = data;
   });
-}
-
-if('Notification' in window){
-  if(Notification.permission === "granted"){
-    const notification =
-    new Notification('Les notifications sont activés');
-  }
 }
