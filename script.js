@@ -121,8 +121,16 @@ function click_favoris(id_elm){
   var elm = document.getElementById(id_elm);
   if(elm.className == "no_fav"){
     elm.className="is_fav";
+    if(Notification.permission === "granted"){
+      const notification =
+      new Notification('L\'image '+id_elm+' a été rajouté aux favoris');
+    }
   }else{
     elm.className="no_fav";
+    if(Notification.permission === "granted"){
+      const notification =
+      new Notification('L\'image '+id_elm+' a été retiré des favoris');
+    }
   }
 
   fetch("http://localhost:3000/favoris", {
@@ -143,6 +151,6 @@ function click_favoris(id_elm){
 if('Notification' in window){
   if(Notification.permission === "granted"){
     const notification =
-    new Notification('Vous avez accepté les notifications');
+    new Notification('Les notifications sont activés');
   }
 }
