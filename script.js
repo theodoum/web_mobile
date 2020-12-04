@@ -135,7 +135,14 @@ function click_favoris(id_elm){
   }).then(res => {
     return res.json();
   }).then(data => {
-    console.log("click", data);
+    console.log("data", data);
     favs = data;
   });
+}
+
+if('Notification' in window){
+  if(Notification.permission === "granted"){
+    const notification =
+    new Notification('Vous avez accepté les notifications');
+  }
 }
