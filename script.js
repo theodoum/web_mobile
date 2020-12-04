@@ -123,7 +123,7 @@ function click_favoris(id_elm){
     elm.className="is_fav";
     if(Notification.permission === "granted"){
       const notification =
-      new Notification('L\'image '+id_elm+' a été rajouté aux favoris');
+      new Notification('L\'image '+id_elm+' a été ajouté aux favoris');
     }
   }else{
     elm.className="no_fav";
